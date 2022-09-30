@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM ubuntu:jammy-curl
+FROM buildpack-deps:jammy-curl
 
 
 # ensure local python is preferred over distribution python

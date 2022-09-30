@@ -15,7 +15,7 @@
 FROM alpine:{{ env.variant | ltrimstr("alpine") }}
 
 {{ ) elif is_ubuntu and is_slim then ( -}}
-FROM ubuntu:{{ env.variant | ltrimstr("ubuntu-") }}
+FROM buildpack-deps:{{ env.variant | ltrimstr("ubuntu-") }}
 
 {{ ) elif is_slim then ( -}}
 FROM debian:{{ env.variant | ltrimstr("slim-") }}-slim
