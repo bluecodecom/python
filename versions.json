@@ -9,7 +9,11 @@
       "version": "63.2.0"
     },
     "variants": [
-      "ubuntu-jammy-curl"
+      "ubuntu-jammy-curl",
+      "bullseye",
+      "slim-bullseye",
+      "buster",
+      "slim-buster"
     ],
     "version": "3.11.0rc2"
   },
@@ -23,7 +27,11 @@
       "version": "57.5.0"
     },
     "variants": [
-      "ubuntu-jammy-curl"
+      "ubuntu-jammy-curl",
+      "bullseye",
+      "slim-bullseye",
+      "buster",
+      "slim-buster"
     ],
     "version": "3.7.14"
   },
@@ -37,7 +45,11 @@
       "version": "57.5.0"
     },
     "variants": [
-      "ubuntu-jammy-curl"
+      "ubuntu-jammy-curl",
+      "bullseye",
+      "slim-bullseye",
+      "buster",
+      "slim-buster"
     ],
     "version": "3.8.14"
   },
@@ -51,7 +63,11 @@
       "version": "58.1.0"
     },
     "variants": [
-      "ubuntu-jammy-curl"
+      "ubuntu-jammy-curl",
+      "bullseye",
+      "slim-bullseye",
+      "buster",
+      "slim-buster"
     ],
     "version": "3.9.14"
   }
