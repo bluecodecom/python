@@ -163,11 +163,12 @@ for version in "${versions[@]}"; do
 			variants: [
 			  (
 			  "jammy-curl"
-			  ) # ,  # need comma for the rest
-#				(
-#					"bullseye",
-#					"buster"
-#				| ., "slim-" + .), # https://github.com/docker-library/ruby/pull/142#issuecomment-320012893
+			  | "ubuntu-" + .
+			  ),  # need comma for the rest
+				(
+					"bullseye",
+					"buster"
+				| ., "slim-" + .)#, # https://github.com/docker-library/ruby/pull/142#issuecomment-320012893
 #				(
 #					"3.16",
 #					"3.15"
