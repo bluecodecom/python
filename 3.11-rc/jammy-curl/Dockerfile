@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM buildpack-deps:bullseye
+FROM buildpack-deps:jammy-curl
 
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
