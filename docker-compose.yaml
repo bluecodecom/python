@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  pydeb:
+    container_name: deb
+    platform: linux/amd64
+#    image: "${IMAGE_NAME-bookrunner}:${IMAGE_TAG-1}"
+#    image: "784047988827.dkr.ecr.eu-central-1.amazonaws.com/python:latest"
+    image: py:3.9-slim
+    build:
+      context: 3.9/slim-bullseye
+    command: 'tail -f /dev/null'
+# pip install jupyterlab; jupyter-lab --allow-root --ip 0.0.0.0 --port 8000
+  pyub:
+    container_name: ubu
+    platform: linux/amd64
+#    image: "${IMAGE_NAME-bookrunner}:${IMAGE_TAG-1}"
+#    image: "784047988827.dkr.ecr.eu-central-1.amazonaws.com/python:latest"
+    image: python:3.9-ub
+    build:
+      context: 3.9/ubuntu-jammy-curl
+    command: 'tail -f /dev/null'
+# pip install jupyterlab; jupyter-lab --allow-root --ip 0.0.0.0 --port 8000
+  debian:
+    container_name: debian
+    platform: linux/amd64
+#    image: "${IMAGE_NAME-bookrunner}:${IMAGE_TAG-1}"
+#    image: "784047988827.dkr.ecr.eu-central-1.amazonaws.com/python:latest"
+    image: debian:bullseye-slim
+    command: 'tail -f /dev/null'
+
+  ubuntu:
+    container_name: ubuntu
+    platform: linux/amd64
+#    image: "${IMAGE_NAME-bookrunner}:${IMAGE_TAG-1}"
+#    image: "784047988827.dkr.ecr.eu-central-1.amazonaws.com/python:latest"
+    image: buildpack-deps:jammy-curl
+    command: 'tail -f /dev/null'
+# 
+# 

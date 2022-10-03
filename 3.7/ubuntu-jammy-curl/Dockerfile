@@ -29,7 +29,8 @@ ENV PYTHON_VERSION 3.7.14
 
 RUN set -eux; \
 	\
-	savedAptMark="$(apt-mark showmanual)"; \
+	savedAptMark="$(apt-mark showmanual)" \
+	savedAptMark="$savedAptMark libgdbm6" \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		dpkg-dev \

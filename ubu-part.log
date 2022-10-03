@@ -1,0 +1,99 @@
+#7 530.5 + xargs -r dpkg-query --search
+#7 530.5 + cut -d: -f1
+#7 530.5 + sort -u
+#7 530.5 + xargs -r apt-mark manual
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 530.6 	not a dynamic executable
+#7 531.0 	not a dynamic executable
+#7 531.0 	not a dynamic executable
+#7 531.0 	not a dynamic executable
+#7 531.0 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.1 	not a dynamic executable
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libcrypto.so.3
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libffi.so.8
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libgdbm.so.6
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libgssapi_krb5.so.2
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libk5crypto.so.3
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libkrb5.so.3
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libkrb5support.so.0
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libnsl.so.2
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libpanelw.so.6
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libsqlite3.so.0
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libssl.so.3
+#7 531.5 dpkg-query: no path found matching pattern /lib/x86_64-linux-gnu/libuuid.so.1
+#7 531.5 dpkg-query: no path found matching pattern /usr/local/lib/libpython3.9.so.1.0
+#7 532.3 libbz2-1.0 was already set to manually installed.
+#7 532.3 libc6 was already set to manually installed.
+#7 532.3 libcom-err2 was already set to manually installed.
+#7 532.3 libcrypt1 was already set to manually installed.
+#7 532.3 libkeyutils1 was already set to manually installed.
+#7 532.3 liblzma5 was already set to manually installed.
+#7 532.3 libncursesw6 was already set to manually installed.
+#7 532.3 libtinfo6 was already set to manually installed.
+#7 532.3 libtirpc3 was already set to manually installed.
+#7 532.3 zlib1g was already set to manually installed.
+#7 532.3 libexpat1 set to manually installed.
+#7 532.3 libreadline8 set to manually installed.
+#7 532.3 + apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+#7 532.4 Reading package lists...
+#7 533.0 Building dependency tree...
+#7 533.2 Reading state information...
+#7 533.4 The following packages will be REMOVED:
+#7 533.4   binutils* binutils-common* binutils-x86-64-linux-gnu* bzip2* cpp* cpp-11*
+#7 533.4   dpkg-dev* fontconfig-config* fonts-dejavu-core* gcc* gcc-11* gcc-11-base*
+#7 533.4   libasan6* libatomic1* libbinutils* libbluetooth-dev* libbluetooth3*
+#7 533.4   libbrotli-dev* libbsd0* libbz2-dev* libc-dev-bin* libc6-dev* libcc1-0*
+#7 533.4   libcrypt-dev* libctf-nobfd0* libctf0* libdpkg-perl* libexpat1-dev*
+#7 533.4   libffi-dev* libfontconfig-dev* libfontconfig1* libfontconfig1-dev*
+#7 533.4   libfreetype-dev* libfreetype6* libfreetype6-dev* libgcc-11-dev*
+#7 533.4   libgdbm-compat4* libgdbm-dev* libgdbm6* libglib2.0-0* libgomp1* libisl23*
+#7 533.4   libitm1* liblsan0* liblzma-dev* libmd0* libmpc3* libmpfr6* libncurses-dev*
+#7 533.4   libncursesw5-dev* libnsl-dev* libperl5.34* libpng-dev* libpng16-16*
+#7 533.4   libpthread-stubs0-dev* libquadmath0* libreadline-dev* libsqlite3-dev*
+#7 533.4   libssl-dev* libtcl8.6* libtirpc-dev* libtk8.6* libtsan0* libubsan1*
+#7 533.4   libx11-6* libx11-data* libx11-dev* libxau-dev* libxau6* libxcb1*
+#7 533.4   libxcb1-dev* libxdmcp-dev* libxdmcp6* libxext-dev* libxext6* libxft-dev*
+#7 533.4   libxft2* libxrender-dev* libxrender1* libxss-dev* libxss1* linux-libc-dev*
+#7 533.4   lto-disabled-list* make* patch* perl* perl-modules-5.34* pkg-config*
+#7 533.4   rpcsvc-proto* tcl* tcl-dev* tcl8.6* tcl8.6-dev* tk* tk-dev* tk8.6*
+#7 533.4   tk8.6-dev* ucf* uuid-dev* x11-common* x11proto-core-dev* x11proto-dev*
+#7 533.4   xorg-sgml-doctools* xtrans-dev* xz-utils* zlib1g-dev*
+#7 533.7 0 upgraded, 0 newly installed, 106 to remove and 4 not upgraded.
+#7 533.7 After this operation, 276 MB disk space will be freed.
+#7 533.8 (Reading database ... 

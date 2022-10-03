@@ -115,7 +115,12 @@ RUN set -eux; \
 	; \
 	\
 {{ ) elif is_slim then ( -}}
+{{ if is_ubuntu then ( -}}
+	savedAptMark="$(apt-mark showmanual)" \
+	savedAptMark="$savedAptMark libgdbm6" \
+{{ ) else ( -}}
 	savedAptMark="$(apt-mark showmanual)"; \
+{{ ) end -}}
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		dpkg-dev \

@@ -1,0 +1,99 @@
+#7 587.7 + xargs -r dpkg-query --search
+#7 587.7 + cut -d: -f1
+#7 587.7 + sort -u
+#7 587.7 + xargs -r apt-mark manual
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 587.7 	not a dynamic executable
+#7 588.1 	not a dynamic executable
+#7 588.1 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.2 	not a dynamic executable
+#7 588.3 dpkg-query: no path found matching pattern /usr/local/lib/libpython3.9.so.1.0
+#7 589.0 libbz2-1.0 set to manually installed.
+#7 589.0 libc6 set to manually installed.
+#7 589.0 libcom-err2 set to manually installed.
+#7 589.0 libcrypt1 set to manually installed.
+#7 589.0 libexpat1 set to manually installed.
+#7 589.0 libffi7 set to manually installed.
+#7 589.0 libgdbm6 set to manually installed.
+#7 589.0 libgssapi-krb5-2 set to manually installed.
+#7 589.0 libk5crypto3 set to manually installed.
+#7 589.0 libkeyutils1 set to manually installed.
+#7 589.0 libkrb5-3 set to manually installed.
+#7 589.0 libkrb5support0 set to manually installed.
+#7 589.0 liblzma5 set to manually installed.
+#7 589.0 libncursesw6 set to manually installed.
+#7 589.0 libnsl2 set to manually installed.
+#7 589.0 libreadline8 set to manually installed.
+#7 589.0 libsqlite3-0 set to manually installed.
+#7 589.0 libssl1.1 set to manually installed.
+#7 589.0 libtinfo6 set to manually installed.
+#7 589.0 libtirpc3 set to manually installed.
+#7 589.0 libuuid1 set to manually installed.
+#7 589.0 zlib1g set to manually installed.
+#7 589.0 + apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false
+#7 589.0 Reading package lists...
+#7 589.5 Building dependency tree...
+#7 589.6 Reading state information...
+#7 589.7 The following packages will be REMOVED:
+#7 589.7   binutils* binutils-common* binutils-x86-64-linux-gnu* bzip2* cpp* cpp-10*
+#7 589.7   dirmngr* dpkg-dev* fontconfig-config* fonts-dejavu-core* gcc* gcc-10* gnupg*
+#7 589.7   gnupg-l10n* gnupg-utils* gpg* gpg-agent* gpg-wks-client* gpg-wks-server*
+#7 589.7   gpgconf* gpgsm* libasan6* libassuan0* libatomic1* libbinutils*
+#7 589.7   libbluetooth-dev* libbluetooth3* libbrotli-dev* libbrotli1* libbsd0*
+#7 589.7   libbz2-dev* libc-dev-bin* libc6-dev* libcc1-0* libcrypt-dev* libctf-nobfd0*
+#7 589.7   libctf0* libdpkg-perl* libexpat1-dev* libffi-dev* libfontconfig-dev*
+#7 589.7   libfontconfig1* libfontconfig1-dev* libfreetype-dev* libfreetype6*
+#7 589.7   libfreetype6-dev* libgcc-10-dev* libgdbm-compat4* libgdbm-dev* libglib2.0-0*
+#7 589.7   libgomp1* libisl23* libitm1* libksba8* libldap-2.4-2* liblsan0* liblzma-dev*
+#7 589.7   libmd0* libmpc3* libmpfr6* libncurses-dev* libncurses6* libncursesw5-dev*
+#7 589.7   libnpth0* libnsl-dev* libperl5.32* libpng-dev* libpng16-16* libpsl5*
+#7 589.7   libpthread-stubs0-dev* libquadmath0* libreadline-dev* libsasl2-2*
+#7 589.7   libsasl2-modules-db* libsqlite3-dev* libssl-dev* libtcl8.6* libtirpc-dev*
+#7 589.7   libtk8.6* libtsan0* libubsan1* libx11-6* libx11-data* libx11-dev*
+#7 589.7   libxau-dev* libxau6* libxcb1* libxcb1-dev* libxdmcp-dev* libxdmcp6*
+#7 589.7   libxext-dev* libxext6* libxft-dev* libxft2* libxrender-dev* libxrender1*
+#7 589.7   libxss-dev* libxss1* linux-libc-dev* make* patch* perl* perl-modules-5.32*
+#7 589.7   pinentry-curses* pkg-config* sensible-utils* tcl* tcl-dev* tcl8.6*
+#7 589.7   tcl8.6-dev* tk* tk-dev* tk8.6* tk8.6-dev* ucf* uuid-dev* wget* x11-common*
+#7 589.7   x11proto-core-dev* x11proto-dev* x11proto-scrnsaver-dev* x11proto-xext-dev*
+#7 589.7   xorg-sgml-doctools* xtrans-dev* xz-utils* zlib1g-dev*
+#7 589.9 0 upgraded, 0 newly installed, 126 to remove and 0 not upgraded.
+#7 589.9 After this operation, 310 MB disk space will be freed.
+#7 590.0 (Reading database ... 
