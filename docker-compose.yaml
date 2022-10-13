@@ -1,0 +1,31 @@
+version: "3.8"
+# some debug images
+services:
+  pydeb:
+    container_name: deb
+    platform: linux/amd64
+    image: python:3.9-slim-bullseye-local
+    build:
+      context: 3.9/slim-bullseye
+    command: 'tail -f /dev/null'
+
+  pyub:
+    container_name: ubu
+    # platform: linux/amd64
+    image: python:3.9-ubuntu-jammy-curl
+    build:
+      context: 3.9/ubuntu-jammy-curl
+    command: 'tail -f /dev/null'
+
+  debian:
+    container_name: debian
+    platform: linux/amd64
+    image: debian:bullseye-slim
+    command: 'tail -f /dev/null'
+
+  ubuntu:
+    container_name: ubuntu
+    platform: linux/amd64
+    image: buildpack-deps:jammy-curl
+    command: 'tail -f /dev/null'
+

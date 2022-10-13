@@ -3,8 +3,8 @@
 #
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
+FROM buildpack-deps:jammy-curl
 
-FROM debian:buster-slim
 
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
@@ -28,7 +28,7 @@ ENV PYTHON_VERSION 3.9.14
 
 RUN set -eux; \
 	\
-	savedAptMark="$(apt-mark showmanual)"; \
+	savedAptMark="$(apt-mark showmanual) libgdbm6"; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		dpkg-dev \

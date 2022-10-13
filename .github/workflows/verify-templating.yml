@@ -2,7 +2,7 @@ name: Verify Templating
 
 on:
   pull_request:
-  push:
+#  push:
 
 defaults:
   run:

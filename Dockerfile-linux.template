@@ -3,15 +3,23 @@
 		env.variant | startswith("alpine")
 	;
 	def is_slim:
-		env.variant | startswith("slim-")
+		env.variant | startswith("slim-") or startswith("ubuntu-")
+	;
+	def is_ubuntu:
+		env.variant | startswith("ubuntu-")
 	;
 	def rcVersion:
 		env.version | rtrimstr("-rc")
 -}}
 {{ if is_alpine then ( -}}
 FROM alpine:{{ env.variant | ltrimstr("alpine") }}
+
+{{ ) elif is_ubuntu and is_slim then ( -}}
+FROM buildpack-deps:{{ env.variant | ltrimstr("ubuntu-") }}
+
 {{ ) elif is_slim then ( -}}
 FROM debian:{{ env.variant | ltrimstr("slim-") }}-slim
+
 {{ ) else ( -}}
 FROM buildpack-deps:{{ env.variant }}
 {{ ) end -}}
@@ -107,7 +115,11 @@ RUN set -eux; \
 	; \
 	\
 {{ ) elif is_slim then ( -}}
+{{ if is_ubuntu then ( -}}
+	savedAptMark="$(apt-mark showmanual) libgdbm6"; \
+{{ ) else ( -}}
 	savedAptMark="$(apt-mark showmanual)"; \
+{{ ) end -}}
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
 		dpkg-dev \

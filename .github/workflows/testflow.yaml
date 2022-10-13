@@ -1,0 +1,71 @@
+name: testflow
+
+on:
+  workflow_dispatch:
+#  pull_request:
+#  push:
+#  schedule:
+#    - cron: 0 0 * * 0
+
+defaults:
+  run:
+    shell: 'bash -Eeuo pipefail -x {0}'
+
+jobs:
+  test-and-push:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: 3.9.14-ubuntu-jammy-curl
+            os: ubuntu-latest
+            meta:
+              entries:
+                - name: 3.9.14-ubuntu-jammy-curl
+                  tags:
+                    - python:3.9.14-ubuntu-jammy-curl
+                    - python:3.9-ubuntu-jammy-curl
+                    - python:3.9.14
+                    - python:3.9
+                  directory: 3.9/ubuntu-jammy-curl
+                  file: Dockerfile
+                  constraints: [ ]
+                  froms:
+                    - buildpack-deps:jammy-curl
+              froms:
+                - buildpack-deps:jammy-curl
+              dockerfiles:
+                - 3.9/ubuntu-jammy-curl/Dockerfile
+            runs:
+              build: docker build --tag 'python:3.9.14-ubuntu-jammy-curl' --tag 'python:3.9-ubuntu-jammy-curl' --tag 'python:3.9.14' --tag 'python:3.9' '3.9/ubuntu-jammy-curl'
+              history: docker history 'python:3.9.14-ubuntu-jammy-curl'
+              test: |-
+                set -- 'python:3.9.14-ubuntu-jammy-curl'
+                if [ -s ./.test/config.sh ]; then set -- --config ~/oi/test/config.sh --config ./.test/config.sh "$@"; fi
+                ~/oi/test/run.sh "$@"
+                aFiles="$(docker run --rm 'python:3.9.14-ubuntu-jammy-curl' find /usr/local -name "*.a" | tee /dev/stderr)"; [ -z "$aFiles" ]
+              prepare: |-
+                git clone --depth 1 https://github.com/docker-library/official-images.git -b master ~/oi
+                # create a dummy empty image/layer so we can --filter since= later to get a meaningful image list
+                { echo FROM busybox:latest; echo RUN :; } | docker build --no-cache --tag image-list-marker -
+              pull: docker pull 'buildpack-deps:jammy-curl'
+              images: docker image ls --filter since=image-list-marker
+
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: "Fake build?"
+        run: ${{ matrix.runs.fake_build }}
+
+        # take meta entries tags and replace `python:` with <registry_url/python>
+#
+#      - name: Push if main branch
+#        uses: docker/build-push-action@v3
+#        with:
+#          file: ${{ matrix.meta.etntries.directory }}
+#          context: .
+#          # push only when in main
+#          push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+#          tags: |
+#            ${{ matrix.meta.entries.tags }}

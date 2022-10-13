@@ -161,20 +161,24 @@ for version in "${versions[@]}"; do
 				version: env.setuptoolsVersion,
 			},
 			variants: [
-				(
-					"bullseye",
-					"buster"
-				| ., "slim-" + .), # https://github.com/docker-library/ruby/pull/142#issuecomment-320012893
-				(
-					"3.16",
-					"3.15"
-				| "alpine" + .),
-				if env.hasWindows != "" then
-					(
-						"ltsc2022",
-						"1809"
-					| "windows/windowsservercore-" + .)
-				else empty end
+			  (
+			  "jammy-curl"
+			  | "ubuntu-" + .
+			  ) #,  # need comma for the rest
+#				(
+#					"bullseye",
+#					"buster"
+#				| ., "slim-" + .)#, # https://github.com/docker-library/ruby/pull/142#issuecomment-320012893
+#				(
+#					"3.16",
+#					"3.15"
+#				| "alpine" + .) #,
+#				if env.hasWindows != "" then
+#					(
+#						"ltsc2022",
+#						"1809"
+#					| "windows/windowsservercore-" + .)
+#				else empty end
 			],
 		}
 	')"
