@@ -31,7 +31,7 @@ jobs:
       # - uses: docker-library/bashbrew@HEAD
       - uses: docker-library/bashbrew@63bf7cff3d91749e01babbd079de8b472330fb90
       - id: auth
-        uses: 'google-github-actions/auth@v0'
+        uses: 'google-github-actions/auth@v2'
         with:
           token_format: 'access_token'
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
