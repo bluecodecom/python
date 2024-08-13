@@ -64,6 +64,7 @@ cat <<-EOH
 Maintainers: Tianon Gravi <admwiggin@gmail.com> (@tianon),
              Joseph Ferguson <yosifkit@gmail.com> (@yosifkit)
 GitRepo: https://github.com/docker-library/python.git
+Builder: buildkit
 EOH
 
 # prints "$2$1$3$1...$N"
@@ -134,8 +135,12 @@ for version; do
 		esac
 
 		case "$version" in
-			3.7 | 3.8 | 3.9 | 3.10) ;;
+			3.8 | 3.9) ;;
 			*)
+				if [ "$version" != '3.10' ]; then
+					# https://github.com/docker-library/python/pull/931
+					variantArches="$(sed <<<" $variantArches " -e 's/ riscv64 / /g')"
+				fi
 				# https://github.com/python/cpython/issues/93619 + https://peps.python.org/pep-0011/
 				variantArches="$(sed <<<" $variantArches " -e 's/ mips64le / /g')"
 				;;
@@ -165,6 +170,7 @@ for version; do
 		EOE
 		if [[ "$v" == windows/* ]]; then
 			echo "Constraints: $variant"
+			echo 'Builder: classic'
 		fi
 	done
 done
