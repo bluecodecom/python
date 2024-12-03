@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # - uses: docker-library/bashbrew@HEAD
-      - uses: docker-library/bashbrew@63bf7cff3d91749e01babbd079de8b472330fb90
+      - uses: docker-library/bashbrew@HEAD
 #      - id: auth
 #        uses: 'google-github-actions/auth@v2'
 #        with:
@@ -64,7 +64,7 @@ jobs:
           #### custom code to replace image name in generated workflow code ###
           # replace image name in generated workflow code 
           matrix_names="$(jq <<<"$strategy" -rc '.matrix.include | map(.name) | join(" ")')"
-          IMAGE_NAME='ghcr.io/bluecodecom/python/ubuntu'
+          IMAGE_NAME='ghcr.io/bluecodecom/python'
           echo "$IMAGE_NAME"
           for name in $matrix_names; do
             echo Updating "$name" ...

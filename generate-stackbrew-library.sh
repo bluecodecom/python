@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 declare -A aliases=(
-	[3.10]='3 latest'
+	[3.13]='3 latest'
 )
 
 self="$(basename "$BASH_SOURCE")"
@@ -44,17 +44,19 @@ dirCommit() {
 
 getArches() {
 	local repo="$1"; shift
-	local officialImagesUrl='https://github.com/docker-library/official-images/raw/master/library/'
+	local officialImagesBase="${BASHBREW_LIBRARY:-https://github.com/docker-library/official-images/raw/HEAD/library}/"
 
-	eval "declare -g -A parentRepoToArches=( $(
-		find -name 'Dockerfile' -exec awk '
+	local parentRepoToArchesStr
+	parentRepoToArchesStr="$(
+		find -name 'Dockerfile' -exec awk -v officialImagesBase="$officialImagesBase" '
 				toupper($1) == "FROM" && $2 !~ /^('"$repo"'|scratch|.*\/.*)(:|$)/ {
-					print "'"$officialImagesUrl"'" $2
+					printf "%s%s\n", officialImagesBase, $2
 				}
 			' '{}' + \
 			| sort -u \
-			| xargs bashbrew cat --format '[{{ .RepoName }}:{{ .TagName }}]="{{ join " " .TagEntry.Architectures }}"'
-	) )"
+			| xargs -r bashbrew cat --format '["{{ .RepoName }}:{{ .TagName }}"]="{{ join " " .TagEntry.Architectures }}"'
+	)"
+	eval "declare -g -A parentRepoToArches=( $parentRepoToArchesStr )"
 }
 getArches 'python'
 
@@ -135,7 +137,7 @@ for version; do
 		esac
 
 		case "$version" in
-			3.8 | 3.9) ;;
+			3.9) ;;
 			*)
 				if [ "$version" != '3.10' ]; then
 					# https://github.com/docker-library/python/pull/931
@@ -145,6 +147,12 @@ for version; do
 				variantArches="$(sed <<<" $variantArches " -e 's/ mips64le / /g')"
 				;;
 		esac
+
+		if [ "$fullVersion" = '3.14.0a1' ]; then
+			# https://github.com/python/cpython/issues/125535 - 3.14.0a1 fails to build on i386
+			# https://github.com/python/cpython/pull/125244 (already fixed for the next release)
+			variantArches="$(sed <<<" $variantArches " -e 's/ i386 / /g')"
+		fi
 
 		sharedTags=()
 		for windowsShared in windowsservercore nanoserver; do
