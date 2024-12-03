@@ -93,8 +93,10 @@ jobs:
   test-and-push:
     needs: generate-jobs
     permissions:
-      id-token: write
       contents: read
+      packages: write
+      attestations: write
+      id-token: write
     strategy: ${{ fromJson(needs.generate-jobs.outputs.strategy) }}
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
